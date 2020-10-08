@@ -1,0 +1,30 @@
+https://blog.csdn.net/weixin_43938093/article/details/102632520
+from imageio import imread
+ImportError: cannot import name ‘imread’ from 'scipy.misc’问题的解决办法
+wordcloud库做词云时常见的错误
+如果您在使用python绘制词云时使用：
+
+from scipy.misc import imread
+mask=imread('map1.png')
+1
+2
+出现了 ImportError: cannot import name ‘imread’ from ‘scipy.misc’ 这样的错误，那么问题代码通常是导入scipy库的版本出现了问题。
+
+解决方法：
+pip install scipy==1.2.0
+#将scipy库的版本还原至1.2.0版本
+from imageio import imread
+#使用imageio库同样能够完成此功能
+问题分析
+
+针对scipy库的版本问题：
+
+python -c "import scipy; print(scipy.__version__)"
+1
+可以在cmd命令行查看scipy库的版本信息，笔者通过查询发现，scipy版本为1.3.1
+
+查询scipy库的版本信息（1.3.1）
+使用pip install scipy==1.2.0更换了版本之后就不会报出**ImportError: cannot import name ‘imread’ from ‘scipy.misc’**错误了。
+更改scipy库版本为1.2.0
+完成词云
+图中可以看到，scipy.imread('图片.格式')的imread方法被更换成了1.2.0的版本，但最终系统还是使用了imageio.inread实现了词云的生成。因此，使用imageio库同样能够实现此功能。
