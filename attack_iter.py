@@ -9,6 +9,7 @@ import pretrainedmodels
 from advertorch.attacks import LinfPGDAttack, MomentumIterativeAttack
 
 from dataset import *
+from imageio import imread
 from utils_sgm import register_hook_for_resnet, register_hook_for_densenet
 
 model_names = sorted(name for name in pretrainedmodels.__dict__
