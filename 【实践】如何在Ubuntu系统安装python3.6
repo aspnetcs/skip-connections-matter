@@ -1,0 +1,55 @@
+https://cloud.tencent.com/developer/article/1397411
+1，摘要
+本文讲解了如何在在linux系统(Ubuntu)安装python3.6的过程。
+
+2，前置提示
+如果本机安装了python2，尽量不要管他，使用python3运行python脚本就好，因为可能有程序依赖目前的python2环境，比如yum！！！！！
+ 不要动现有的python2环境！
+
+3，安装python3.6
+3.1 下载Python3
+网址：https://www.python.org/downloads/
+ 通过网站下载后上传到Ubuntu环境，或者直接命令下载。
+ 假设工作目录为，cd /usr/local，执行下载版本命令
+
+ wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
+3.2 安装python3
+解压下载的压缩文件
+
+ tar -xf Python-3.6.3.tgz
+3.3 进入解压后的目录，编译安装
+ cd Python-3.6.3
+ 
+ ./configure --prefix=/usr/local/python3 
+3.4 编译安装
+ make
+ make install
+3.5 建立python3的软链
+ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+3.6 将/usr/local/python3/bin加入PATH
+ vim ~/.bash_profile
+编辑内容，增加python3的可执行文件。
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+# User specific environment and startup programs
+PATH=$PATH:$HOME/bin:/usr/local/python3/bin
+export PATH
+按ESC，输入:wq回车退出。
+
+修改完记得执行行下面的命令，让上一步的修改生效：
+
+ source ~/.bash_profile
+3.7　检查Python3及pip3是否正常可用
+ python3 -V
+ pip3 -V
+# python3 -V
+Python 3.6.1
+# pip3 -V
+pip 9.0.1 from /usr/local/python3/lib/python3.6/site-packages (python 3.6)
+不行的话在创建一下pip3的软链接:
+
+ ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+本文参与腾讯云自媒体分享计划，欢迎正在阅读的你也加入，一起分享。
